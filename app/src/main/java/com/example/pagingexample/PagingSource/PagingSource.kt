@@ -10,7 +10,7 @@ class QuotePagingSource : PagingSource<Int, Result>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
             val position = params.key ?: 1
-            val response = RetrofitClient.RetrofitInstance.getQuotes(position)
+            val response = RetrofitClient.api.getQuotes(position)
 
             return LoadResult.Page(
                 data = response.results,
